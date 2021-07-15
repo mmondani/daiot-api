@@ -1,11 +1,13 @@
 module.exports = (app) => {
     const datos = require('../controllers/dato.controller.js');
+    const auth = require('../middlewares/auth.middleware.js');
+
 
     // Create a new Note
-    app.post('/datos', datos.create);
+    app.post('/datos', auth, datos.create);
 
     // Retrieve all Notes
-    app.get('/datos', datos.findAll);
+    app.get('/datos', auth, datos.findAll);
 
     // Retrieve a single Note with noteId
     app.get('/datos/:datoId', datos.findOne);
