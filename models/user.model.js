@@ -56,17 +56,19 @@ userSchema.methods.generateAuthToken = async function() {
 }
 
 userSchema.statics.findByCredentials = async (email, password) => { //espera dos parámetros, el correo electrónico del usuario y la contraseña
+    //const User = mongoose.model('User', userSchema)
     // Buscar el susuario por email y password.
-    const user = await User.findOne({ email} )                              ////buscamos un usuario con el correo electrónico proporcionado utilizando el método de búsqueda de mongoose
+    const user = await User.findOne({ email} );     console.log(password==user.password)                         ////buscamos un usuario con el correo electrónico proporcionado utilizando el método de búsqueda de mongoose
     if (!user) {                                                            //Si el usuario no está disponible, arrojamos un error para informarle 
         throw new Error({ error: 'Credenciales de login inválidas' })       //que las credenciales que proporcionó no son válidas
     }
     const isPasswordMatch = await bcrypt.compare(password, user.password)   //comparamos la contraseña recibida con la contraseña almacenada y si coinciden, devolvemos ese usuario. Utilizaremos esta función para registrar a los usuarios en la aplicación.
+    //console.log('comp:',isPasswordMatch);
     if (!isPasswordMatch) {                             
         throw new Error({ error: 'Credenciales de login inválidas' })
     }
     return user
 }
 
-//const User = mongoose.model('User', userSchema)                             //creamos un modelo llamado Usuario y le pasamos nuestro esquema de usuario creado
+const User = mongoose.model('User', userSchema)                             //creamos un modelo llamado Usuario y le pasamos nuestro esquema de usuario creado
 module.exports = mongoose.model('User', userSchema)

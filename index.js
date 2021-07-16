@@ -36,8 +36,9 @@ app.get('/', (req, res) => {
 // Require Notes routes
 require('./routes/empresa.routes.js')(app);
 require('./routes/dato.routes.js')(app);
-const userRouter = require('./routes/user.routes.js')
-app.use(userRouter); //require('./routes/user.routes.js');
+require('./routes/user.routes.js')(app);
+//const userRouter = require('./routes/user.routes.js')
+//app.use(userRouter); //require('./routes/user.routes.js');
 
 // listen for requests
 app.listen(3000, () => {
