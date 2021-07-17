@@ -5,9 +5,9 @@ exports.create = (req, res) => {
 
 };
 
-// Retrieve and return all notes from the database.
-exports.findAll = (req, res) => {
-    Dato.find()
+//--Devuelve todos los datos de un dispositivo
+exports.findAllDispo = (req, res) => {
+    Dato.find({nombre:req.params.dispoId})
     .then(empresas => {
         res.send(empresas);
     }).catch(err => {
@@ -17,8 +17,31 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single note with a noteId
-exports.findOne = (req, res) => {
+//--Devuelve los datos de un dispositivo de un dia
+exports.findDispoDia = (req, res) => {
+    Dato.find({nombre:req.params.dispoId,dia:{$eq:req.params.dia}})
+    .then(dato=>{
+        res.send(dato);
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message: err.message || "Error en la recuperacion de un registro"
+        });
+    });
+
+};
+
+//--Devuelve los datos de un dispositivo desde fecha hasta fecha
+exports.findDispoDesdeHasta = (req, res) => {
+    Dato.find({nombre:req.params.dispoId,dia:{$gte:req.params.fDesde},dia:{$lte:req.params.fHasta}})
+    .then(dato=>{
+        res.send(dato);
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message: err.message || "Error en la recuperacion de un registro"
+        });
+    });
 
 };
 

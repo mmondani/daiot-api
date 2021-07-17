@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const passport = require('passport');
 // create express app
 const app = express();
+const appPort = 3000;
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -20,27 +21,32 @@ mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useFindAndModify: false  
 }).then(() => {
-    console.log("Successfully connected to the database");    
+    console.log("Conectado a la base de datos",dbConfig.url);    
 }).catch(err => {
-    console.log('Could not connect to the database. Exiting now...', err);
+    console.log('No se pudo conectar a la base de datos', err);
     process.exit();
 });
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+    res.json({"message": "API para mongodb DAIoT."});
 });
 
 // Require Notes routes
 require('./routes/empresa.routes.js')(app);
 require('./routes/dato.routes.js')(app);
 require('./routes/user.routes.js')(app);
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport.config')(passport);
+
 //const userRouter = require('./routes/user.routes.js')
 //app.use(userRouter); //require('./routes/user.routes.js');
 
 // listen for requests
-app.listen(3000, () => {
-    console.log("Server is listening on port 3000");
+app.listen(appPort, () => {
+    console.log("Server escuchando en puerto",appPort);
 });

@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')            //paquetes requeridos
-const validator = require('validator')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose');         //paquetes requeridos
+const validator = require('validator');
+//const bcrypt = require('bcryptjs');
+//const jwt = require('jsonwebtoken');
 //const JWT_KEY = 'WinterIsComingGOT2019';
 const userSchema = mongoose.Schema({            //creamos nuestro esquema de mongoose
     name: {                                     // Este objeto define las diferentes propiedades del userSchema. 
@@ -24,19 +24,9 @@ const userSchema = mongoose.Schema({            //creamos nuestro esquema de mon
         type: String,
         required: true,
         minLength: 7
-    },
-    tokens: [{                                  // almacenaremos una lista de tokens
-        token: {                                // permite que un usuario inicie sesión en diferentes dispositivos
-            type: String,                       // y una vez que cierra la sesión de un dispositivo, todavía queremos asegurarnos
-            required: true                      // de que todavía estén conectados en otro dispositivo en el que habían iniciado sesión
-        }
-    }]
-},
-{
-    collection: 'iotUser'
-
-})
-
+    }
+});
+/*
 userSchema.pre('save', async function (next) {                      // nos permite hacer algo antes de guardar el objeto creado
     // Encriptar el password antes de guardarlo en el model user
     const user = this
@@ -58,17 +48,24 @@ userSchema.methods.generateAuthToken = async function() {
 userSchema.statics.findByCredentials = async (email, password) => { //espera dos parámetros, el correo electrónico del usuario y la contraseña
     //const User = mongoose.model('User', userSchema)
     // Buscar el susuario por email y password.
-    const user = await User.findOne({ email} );     console.log(password==user.password)                         ////buscamos un usuario con el correo electrónico proporcionado utilizando el método de búsqueda de mongoose
-    if (!user) {                                                            //Si el usuario no está disponible, arrojamos un error para informarle 
-        throw new Error({ error: 'Credenciales de login inválidas' })       //que las credenciales que proporcionó no son válidas
+    try{
+        const user = await User.findOne({ email} );                            ////buscamos un usuario con el correo electrónico proporcionado utilizando el método de búsqueda de mongoose
+        if (!user) {                                                            //Si el usuario no está disponible, arrojamos un error para informarle 
+            return null
+            //throw new Error({ error: 'Credenciales de login inválidas' })       //que las credenciales que proporcionó no son válidas
+        }
+        const isPasswordMatch = await bcrypt.compare(password, user.password)   //comparamos la contraseña recibida con la contraseña almacenada y si coinciden, devolvemos ese usuario. Utilizaremos esta función para registrar a los usuarios en la aplicación.
+        if (!isPasswordMatch) {                     
+            return null
+            //throw new Error({ error: 'Credenciales de login inválidas' })
+        }
+        return user
     }
-    const isPasswordMatch = await bcrypt.compare(password, user.password)   //comparamos la contraseña recibida con la contraseña almacenada y si coinciden, devolvemos ese usuario. Utilizaremos esta función para registrar a los usuarios en la aplicación.
-    //console.log('comp:',isPasswordMatch);
-    if (!isPasswordMatch) {                             
-        throw new Error({ error: 'Credenciales de login inválidas' })
+    catch (error) {
+        return (error)
     }
-    return user
-}
+        
+}*/
 
-const User = mongoose.model('User', userSchema)                             //creamos un modelo llamado Usuario y le pasamos nuestro esquema de usuario creado
-module.exports = mongoose.model('User', userSchema)
+//const User = mongoose.model('User', userSchema)                             //creamos un modelo llamado Usuario y le pasamos nuestro esquema de usuario creado
+module.exports = mongoose.model('User', userSchema, 'iotUser');

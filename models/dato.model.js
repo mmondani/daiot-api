@@ -6,11 +6,7 @@ const DatoSchema = mongoose.Schema({
     telemetry:JSON,
     nombre:String,
     nsamples:Number,
-    dia:String
-},
-{
-    collection: 'iotDato'
-
+    dia:Date
 });
 
-module.exports = mongoose.model('Dato', DatoSchema);
+module.exports = mongoose.model('Dato', DatoSchema,'iotDato');

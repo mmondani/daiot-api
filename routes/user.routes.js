@@ -1,19 +1,24 @@
 module.exports = (app) => {
     const user = require('../controllers/user.controller.js');
-    const auth = require('../middlewares/auth.middleware.js');
+    //const auth = require('../middlewares/auth.middleware.js');
+    const passport = require('passport');
+    const { register, login, profile, changepassword, forgotpassword, resetpassword } = require('../controllers/user.controller.js');
 
-    // Create a new Note
-    app.post('/users', auth,  user.createUser);
+    //--Registro
+    app.post('/register', user.register);
 
-    // Retrieve all Notes
-    app.get('/users/me', auth, user.verUser);
+    //--Login
+    app.post('/login', user.login);
 
-    // Retrieve a single Note with noteId
-    app.post('/users/login', user.userLogin);
+    //--Perfil de usuario
+    app.get('/users/me/profile', passport.authenticate('jwt', { session: false }), user.profile); //antes auth
 
-    // Update a Note with noteId
-    //app.put('/empresas/:empresaId', empresas.update);
+    //--Cambia password
+    app.post('/changepassword', passport.authenticate('jwt', { session: false }), changepassword);
 
-    // Delete a Note with noteId
-    //app.delete('/empresas/:empresaId', empresas.delete);
+    //--Olvidó password
+    app.post('/forgotpassword', forgotpassword);
+
+    //--Resetea password
+    app.post('/resetpassword', resetpassword)
 }

@@ -1,0 +1,391 @@
+{
+	"info": {
+		"_postman_id": "220e4cf1-0ca0-4588-8642-68b15814574c",
+		"name": "API Mongodb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registra un usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Marcelo Castello\",\n    \"email\":\"castello.marcelo@gmail.com\",\n    \"password\":\"iot123456\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "192.168.1.42:3000/register",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"register"
+					]
+				},
+				"description": "Registra un usuario y lo graba en la colección ```iotUser```.\n\nLos datos a enviar deben estar en el body como un JSON de la forma:\n```js\n{\n    \"name\":\"Marcelo Castello\",\n    \"email\":\"castello.marcelo@gmail.com\",\n    \"password\":\"iot123456\"\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"castello.marcelo@gmail.com\",\n    \"password\":\"iot123456\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "192.168.1.42:3000/login",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "Realiza el login de un usuario ya registrado. \n\nLos usuarios registrados están guaradados en la colección ```iotUser```.\n\nPara registrar un usuario enviar un POST a http://192.168.1.42:3000/register\n\nSi el usuario está registrado se recibe su ```token``` que servirá para enviar como autorización en las transacciones."
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGYxOGRlZTdhNzU0ODA5OWViMDUyMWQiLCJpYXQiOjE2MjY0NDY2NTF9.nI4f_Mg_F-fsvXXpLaAoqTdAT06xQ4Pm1l7ciy06QCQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "192.168.1.42:3000/users/me/logout",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"me",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Muestra perfil de usuario",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGYxOGRlZTdhNzU0ODA5OWViMDUyMWQiLCJpYXQiOjE2MjY0NDQyMjd9.8pPb_KtgE6djE1lwdGS63wTMVCln9WP7pyOmykhLTQE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "192.168.1.42:3000/users/me",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"me"
+					]
+				},
+				"description": "Para ver el perfil del usuario se deberá enviar en el POST en token correspondiente al usuario.\n\nColocar este token en Authorization -> Type -> Bearer Token"
+			},
+			"response": []
+		},
+		{
+			"name": "Muestra todos los datos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGYwOWY1NGZjMmI4MjY3YWI1YWU4NWMiLCJpYXQiOjE2MjYzODIxNjR9.83_Es8PQlWNyyeMd1vHmg0qaKjFRUPCM5h3dTN8Pf4U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.42:3000/datos",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"datos"
+					]
+				},
+				"description": "Para ver todos los datos de la colección ```iotDatos``` se deberá enviar en el POST en token correspondiente al usuario que la solicita.\n\nColocar el token del usuario en Authorization -> Type -> Bearer Token"
+			},
+			"response": []
+		},
+		{
+			"name": "Cambia password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjFmNzhmMWNhOGE4MWFlNDYyOGVkMiIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJG9WM1ZlQ2ZjM1NNdWFlWTA2UmhoSS5VM3FXWnhWM2IyN0xtNEp3Q2drWEhqRUp6dngvVzdPIiwidG9rZW5zIjpbXSwiX192IjowfSwiaWF0IjoxNjI2NDcwMzA0LCJleHAiOjE2MjcwNzUxMDR9.yLr7YloivX79TNo9JrmfdMXSN40V5qybJmifaV0207s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"oldPassword\":\"iot123456\",\n    \"newPassword\":\"nuevapassiot123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "192.168.1.42:3000/changepassword",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"changepassword"
+					]
+				},
+				"description": "Actualiza la contraseña de un usuario. \n\nSe debe proporcionar el token del usuario en Authorization->Type->Bearer Token.\n\nEn el body se deben poner los datos de las contraseñas en formato JSON de la siguiente manera:\n\n```JSON\n{\n    \"oldPassword\":\"iot123456\",\n    \"newPassword\":\"nuevapassiot123\"\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Olvidó contraseña",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"castello.marcelo@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "192.168.1.42:3000/forgotpassword",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"forgotpassword"
+					]
+				},
+				"description": "En caso de olvido de password se deberá enviar este POST con email del usuario que la olvidó. El email debe estar en el body en formato JSON:\n\n```JSON\n{\n    \"email\":\"castello.marcelo@gmail.com\"\n}\n```\n\nEl usuario recibirá en su correo la notificación junto con el token que deberá enviar en el POST ```Reset password```.\n\n**NOTA:** la contraseña anterior no se borra de la BD, por lo que el usuario si la recuerda puede desestimar este procedimiento. El token de recuperación tiene vencimiento."
+			},
+			"response": []
+		},
+		{
+			"name": "Reset password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"newPassword\":\"newpass123\",\n    \"token\":{\n        \"data\":{\n            \"email\":\"castello.marcelo@gmail.com\"\n            }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.42:3000/resetpassword?index=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiY2FzdGVsbG8ubWFyY2Vsb0BnbWFpbC5jb20ifSwiaWF0IjoxNjI2NDczNDQ2LCJleHAiOjE2MjY0NzQxNDZ9.SQnIW5uSdhXH5Mc0N3fR_RRRCvQPuTReOiZwuZvqhII",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"resetpassword"
+					],
+					"query": [
+						{
+							"key": "index",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiY2FzdGVsbG8ubWFyY2Vsb0BnbWFpbC5jb20ifSwiaWF0IjoxNjI2NDczNDQ2LCJleHAiOjE2MjY0NzQxNDZ9.SQnIW5uSdhXH5Mc0N3fR_RRRCvQPuTReOiZwuZvqhII"
+						}
+					]
+				},
+				"description": "Para resetear la passwd, se debe enviar un POST con los siguientes datos en el body:\n```JSON\n{\n    \"newPassword\":\"newpass123\",\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiY2FzdGVsbG8ubWFyY2Vsb0BnbWFpbC5jb20ifSwiaWF0IjoxNjI2NDc0OTkwLCJleHAiOjE2MjY0NzU2OTB9.CMaQUkbQcsbO5GF5bHSN2ITFXVrRmzOCr_QuC-vY4yY\",\n    \"data\":{\n            \"email\":\"castello.marcelo@gmail.com\"\n        }\n}\n```\nDonde:\n\n```token``` es el token que envía la API al ejecutar el POST ```forgotpassword```\n\n```email``` el email del usuario que realizó el POST anterior."
+			},
+			"response": []
+		},
+		{
+			"name": "Trae datos de un dispositivo de un día",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NDgzNDE3LCJleHAiOjE2MjcwODgyMTd9.8URd2TnjZYFm-pYw1J4twoGHLYgRAnmtiB4RyI-e-tY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "192.168.1.42:3000/dato/tervacvjv01/2021-06-24",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"dato",
+						"tervacvjv01",
+						"2021-06-24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trae datos de un dispositivo de fecha desde hasta",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NDgzNDE3LCJleHAiOjE2MjcwODgyMTd9.8URd2TnjZYFm-pYw1J4twoGHLYgRAnmtiB4RyI-e-tY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "192.168.1.42:3000/datos/tervacvjv01/2021-06-24/2021-06-25",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"datos",
+						"tervacvjv01",
+						"2021-06-24",
+						"2021-06-25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trae todos los datos de un dispositivo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NDgzNDE3LCJleHAiOjE2MjcwODgyMTd9.8URd2TnjZYFm-pYw1J4twoGHLYgRAnmtiB4RyI-e-tY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "192.168.1.42:3000/datos/tervacvjv01",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"datos",
+						"tervacvjv01"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
