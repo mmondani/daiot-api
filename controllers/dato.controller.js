@@ -1,18 +1,14 @@
 const Dato = require('../models/dato.model.js');
 
-// Create and Save a new Note
-exports.create = (req, res) => {
-
-};
 
 //--Devuelve todos los datos de un dispositivo
 exports.findAllDispo = (req, res) => {
     Dato.find({nombre:req.params.dispoId})
-    .then(empresas => {
-        res.send(empresas);
+    .then(datos => {
+        res.send(datos);
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
+            message: err.message || "Error en la recuperacion de los registros."
         });
     });
 };
@@ -25,7 +21,7 @@ exports.findDispoDia = (req, res) => {
     })
     .catch(err=>{
         res.status(500).send({
-            message: err.message || "Error en la recuperacion de un registro"
+            message: err.message || "Error en la recuperacion de los registros."
         });
     });
 
@@ -39,18 +35,43 @@ exports.findDispoDesdeHasta = (req, res) => {
     })
     .catch(err=>{
         res.status(500).send({
-            message: err.message || "Error en la recuperacion de un registro"
+            message: err.message || "Error en la recuperacion de los registros."
         });
     });
 
 };
 
-// Update a note identified by the noteId in the request
-exports.update = (req, res) => {
-
-};
-
-// Delete a note with the specified noteId in the request
-exports.delete = (req, res) => {
-
+//--Guarda una telemetria
+exports.pushTelemetry = (req, res) => {
+    Dato.updateOne(
+        {
+            "nombre":req.body.Device, 
+            "nsamples": {$lt: 144}, 
+            "dia":new Date().toJSON().slice(0,10)
+        },
+        {
+            $push:{"telemetry": 
+            {
+                "temp":req.body.Valores.Temperatura,
+                "hum":req.body.Valores.Humedad,
+                "pres":req.body.Valores.Presion,
+                "ts":req.body.Valores.ts
+            }
+        },
+            $min: {"primero": req.body.Valores.ts},
+            $max: {"ultimo": req.body.Valores.ts},
+            $inc:{"nsamples": 1} 
+        },
+        { 
+            upsert: true 
+        }
+    )
+    .then(dato=>{
+        res.send(dato);
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message:err.message || "Error en la insercion de telemetria."
+        });
+    });
 };
