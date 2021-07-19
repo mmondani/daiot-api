@@ -153,7 +153,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGYwOWY1NGZjMmI4MjY3YWI1YWU4NWMiLCJpYXQiOjE2MjYzODIxNjR9.83_Es8PQlWNyyeMd1vHmg0qaKjFRUPCM5h3dTN8Pf4U",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NDgyNzAxLCJleHAiOjE2MjcwODc1MDF9._uy602QpO9c_zB_UtZgu1krhKFxMKn0zVahy-uF1OVM",
 							"type": "string"
 						}
 					]
@@ -161,7 +161,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://192.168.1.42:3000/datos",
+					"raw": "http://192.168.1.42:3000/datos/DAIoT02",
 					"protocol": "http",
 					"host": [
 						"192",
@@ -171,7 +171,8 @@
 					],
 					"port": "3000",
 					"path": [
-						"datos"
+						"datos",
+						"DAIoT02"
 					]
 				},
 				"description": "Para ver todos los datos de la colección ```iotDatos``` se deberá enviar en el POST en token correspondiente al usuario que la solicita.\n\nColocar el token del usuario en Authorization -> Type -> Bearer Token"
@@ -425,6 +426,42 @@
 					]
 				},
 				"description": "Guarda telemetría proveniente de un dsipositivo. El body deberá contener lo siguiente:\n```JSON\n{\n    \"Device\":\"tervacvjv04\",\n    \"Valores\":{\n        \"Temperatura\":22.1,\n        \"Humedad\":68.56,\n        \"Presion\":1028.0,\n        \"ts\":1626547223479\n    }\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Envía comando a dispositivo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "message",
+							"value": "{\"Device\":\"DAIoT02\",\"Actuacion\":{\"Canal\":1,\"Accion\":0}}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "192.168.1.42:3001/command",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3001",
+					"path": [
+						"command"
+					]
+				}
 			},
 			"response": []
 		}
