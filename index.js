@@ -35,11 +35,12 @@ app.get('/', (req, res) => {
     res.json({"message": "API para mongodb DAIoT."});
 });
 
-// Require Notes routes
+//--Rutas
 require('./routes/empresa.routes.js')(app);
 require('./routes/dato.routes.js')(app);
 require('./routes/user.routes.js')(app);
 require('./routes/accion.routes.js')(app);
+require('./routes/dispo.routes.js')(app);
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport.config')(passport);
