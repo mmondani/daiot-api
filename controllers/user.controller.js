@@ -42,7 +42,7 @@ exports.login = (req, res) => {
         if (!err && user) {
             comparePassword(password, user.password, (err, isMatch) => {
                 if (isMatch) {
-                    const token = jwt.sign({ data: user }, jwtconfig.secret, { expiresIn: 604800 });
+                    const token = jwt.sign({ data: user }, jwtconfig.secret, { expiresIn: 604800 });//equivale a 7 días
                     res.status(200).json({ success: true, msg: 'Login Ok ', token: 'Bearer ' + token });
                 } else {
                     return res.status(401).json({ success: false, msg: 'El correo electrónico o la contraseña son incorrectos' });

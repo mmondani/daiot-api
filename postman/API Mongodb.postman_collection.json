@@ -6,6 +6,64 @@
 	},
 	"item": [
 		{
+			"name": "RPC",
+			"item": [
+				{
+					"name": "Envía comando a dispositivo via microservicio RPC",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NzM4OTEzLCJleHAiOjE2MjczNDM3MTN9.x1vS0XnZwrKJw9mP8L35njeN8iXEPY32L54V574IwnE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "message",
+									"value": "{\"Device\":\"DAIoT02\",\"Actuacion\":{\"Canal\":1,\"Accion\":0},\"usuario\":\"castello.marcelo@gmail.com\"}",
+									"type": "text"
+								},
+								{
+									"key": "values",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "192.168.1.42:3001/command",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"42"
+							],
+							"port": "3001",
+							"path": [
+								"command"
+							]
+						},
+						"description": "Envía un comando al broker. La UI que envía el comando, debe enviar:\ntoken: en header.authorization.token\n\ndatos de acción en el body. Debe contener el mensaje a enviar en x-www-form-urlencoded en la clave: \"message\" con el siguiente formato:\n```JSON\n{\n\"Device\":\"DAIoT02\",\n\"Actuacion\":{\n    \"Canal\":1,\n    \"Accion\":0\n    },\n\"usuario\":\"castello.marcelo@gmail.com\"\n}\n```\nLuego la RPC enviará un POST para la grabación de la acción."
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Registra un usuario",
 			"request": {
 				"method": "POST",
@@ -430,19 +488,13 @@
 			"response": []
 		},
 		{
-			"name": "Envía comando a dispositivo",
+			"name": "Guarda una accion",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "message",
-							"value": "{\"Device\":\"DAIoT02\",\"Actuacion\":{\"Canal\":1,\"Accion\":0}}",
-							"type": "text"
-						}
-					],
+					"mode": "raw",
+					"raw": "{\n    \"dispositivo\":\"DAIoT02\",\n    \"usuario\":\"castello.marcelo@gmail.com\",\n    \"ts\":1563232323,\n    \"canal\":1,\n    \"estado\":1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -450,16 +502,16 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3001/command",
+					"raw": "192.168.1.42:3000/accion",
 					"host": [
 						"192",
 						"168",
 						"1",
 						"42"
 					],
-					"port": "3001",
+					"port": "3000",
 					"path": [
-						"command"
+						"accion"
 					]
 				}
 			},

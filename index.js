@@ -39,6 +39,7 @@ app.get('/', (req, res) => {
 require('./routes/empresa.routes.js')(app);
 require('./routes/dato.routes.js')(app);
 require('./routes/user.routes.js')(app);
+require('./routes/accion.routes.js')(app);
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport.config')(passport);
