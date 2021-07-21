@@ -5,6 +5,6 @@ module.exports = (app) => {
     const { register } = require('../controllers/dispo.controller.js');
 
     //--Registro
-    app.post('/dispo/register', dispo.register); //si necesita auth passport.authenticate('jwt', { session: false })
+    app.get('/dispo/register', passport.authenticate('jwt', { session: false }), dispo.register); //si necesita auth passport.authenticate('jwt', { session: false })
 
 }

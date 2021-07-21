@@ -24,6 +24,11 @@ const userSchema = mongoose.Schema({            //creamos nuestro esquema de mon
         type: String,
         required: true,
         minLength: 7
+    },
+    rol:{
+        type: String,
+        required: true,
+        trim: true
     }
 });
 /*

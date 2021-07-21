@@ -5,7 +5,7 @@ module.exports = (app) => {
     const { register, login, profile, changepassword, forgotpassword, resetpassword } = require('../controllers/user.controller.js');
 
     //--Registro
-    app.post('/register', user.register);
+    app.post('/register', passport.authenticate('jwt', { session: false }), user.register);
 
     //--Login
     app.post('/login', user.login);

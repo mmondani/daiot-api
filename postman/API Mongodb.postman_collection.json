@@ -66,11 +66,21 @@
 		{
 			"name": "Registra un usuario",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2ODE5NDcyLCJleHAiOjE2Mjc0MjQyNzJ9.5Kromqo-YZRPMqRpwlD2xgdhRIIzDba9liF_I71Gstk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"Marcelo Castello\",\n    \"email\":\"castello.marcelo@gmail.com\",\n    \"password\":\"iot123456\"\n\n}",
+					"raw": "{\n    \"name\":\"Graciela Martinez\",\n    \"email\":\"gmartinez@gmail.com\",\n    \"password\":\"iot123456\",\n    \"rol\":\"user\",\n    \"admin\":\"castello.marcelo@gmail.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -90,7 +100,7 @@
 						"register"
 					]
 				},
-				"description": "Registra un usuario y lo graba en la colección ```iotUser```.\n\nLos datos a enviar deben estar en el body como un JSON de la forma:\n```js\n{\n    \"name\":\"Marcelo Castello\",\n    \"email\":\"castello.marcelo@gmail.com\",\n    \"password\":\"iot123456\"\n}\n```"
+				"description": "Registra un usuario y lo graba en la colección ```iotUser```.\n\nLos datos a enviar deben estar en el body como un JSON de la forma:\n```js\n{\n    \"name\":\"Graciela Martinez\",\n    \"email\":\"gmartinez@gmail.com\",\n    \"password\":\"iot123456\",\n    \"rol\":\"user\",\n    \"admin\":\"castello.marcelo@gmail.com\"\n}\n```\nEl valor del campo ```admin``` debe ser un usuario registrado y con rol 'admin'."
 			},
 			"response": []
 		},
@@ -514,6 +524,52 @@
 						"accion"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registra un dispositivo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2ODE5NDcyLCJleHAiOjE2Mjc0MjQyNzJ9.5Kromqo-YZRPMqRpwlD2xgdhRIIzDba9liF_I71Gstk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"DAIoT03\",\n    \"tipo\": \"Termohigrómetro\",\n    \"empresa\": \"VJV\",\n    \"variables\":{\n        \"temperatura\":{\n            \"unidad\":\"ªC\",\n            \"prioridad\":\"1\"\n        },\n        \"humedad\":{\n            \"unidad\":\"%\",\n            \"prioridad\":2\n        },\n        \"presion\":{\n            \"unidad\":\"Hp\",\n            \"prioridad\":3\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "192.168.1.42:3000/dispo/register/",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"42"
+					],
+					"port": "3000",
+					"path": [
+						"dispo",
+						"register",
+						""
+					]
+				},
+				"description": "Para registrar un dispositivo se deberá autenticar con el token del usuario que registra e incluir un body con el siguiente formato:\n```JSON\n{\n    \"nombre\": \"DAIoT03\",\n    \"tipo\": \"Termohigrómetro\",\n    \"empresa\": \"VJV\",\n    \"variables\":{\n        \"temperatura\":{\n            \"unidad\":\"ªC\",\n            \"prioridad\":\"1\"\n        },\n        \"humedad\":{\n            \"unidad\":\"%\",\n            \"prioridad\":2\n        },\n        \"presion\":{\n            \"unidad\":\"Hp\",\n            \"prioridad\":3\n        }\n    }\n}\n```"
 			},
 			"response": []
 		}

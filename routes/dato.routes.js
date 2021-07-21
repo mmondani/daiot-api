@@ -14,6 +14,6 @@ module.exports = (app) => {
     app.get('/datos/:dispoId/:fDesde/:fHasta', passport.authenticate('jwt', { session: false }), datos.findDispoDesdeHasta);
 
     //--Guarda una telemetria
-    app.put('/telemetry',dispo.auth, datos.pushTelemetry);
+    app.put('/telemetry',dispo.authTelemetry, datos.pushTelemetry);
 
 }

@@ -11,26 +11,32 @@ const jwtDecode = require('jwt-decode');
 const bycrpt = require('bcryptjs');
 
 exports.register = (req, res) => {
-    let newUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-        //created_at: new Date()
-    });
-
-    getUserByEmail(newUser.email, (err, user) => {
-        if (!err) {
-            if (user == null) {
-                createUser(newUser, (err, user) => {
-                    if (err) {
-                        res.status(401).json({ success: false, msg: 'Error al registrar el usuario', err: err });
+    //--Verifica si el usuario que quiere registrar tiene rol administrador
+    getUserByEmail(req.body.admin, (err, user) => {
+        if(user.rol=='admin') {      
+            let newUser = new User({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+                rol: req.body.rol
+            });
+            getUserByEmail(newUser.email, (err, user) => {
+                if (!err) {
+                    if (user == null) {
+                        createUser(newUser, (err, user) => {
+                            if (err) {
+                                res.status(401).json({ success: false, msg: 'Error al registrar el usuario', err: err });
+                            } else {
+                                res.status(200).json({ success: true, msg: 'Usuario registrado' });
+                            }
+                        });
                     } else {
-                        res.status(200).json({ success: true, msg: 'Usuario registrado' });
+                        res.status(401).json({ success: false, msg: 'La dirección de correo electrónico ya está registrada.' });
                     }
-                });
-            } else {
-                res.status(401).json({ success: false, msg: 'La dirección de correo electrónico ya está registrada.' });
-            }
+                }
+            });
+        } else {
+            res.status(401).json({ success: false, msg: 'El usuario no es administraor' });    
         }
     });
 }
@@ -129,6 +135,13 @@ function createUser(newUser, callback) {
 
 function comparePassword(candidatePassword, hash, callback) {
     bycrpt.compare(candidatePassword, hash, (err, isMatch) => {
+        if (err) throw err
+        callback(null, isMatch);
+    });
+}
+
+function compareRol(candidateRol, rol, callback) {
+    ((candidateRol==rol), (err, isMatch) => {
         if (err) throw err
         callback(null, isMatch);
     });
