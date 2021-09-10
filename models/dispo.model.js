@@ -4,7 +4,6 @@ const DispoSchema = mongoose.Schema({
     nombre: String,
     tipo: String,
     empresa:String,
-    //token:String,
     variables:{
         temperatura:{
             unidad:String,

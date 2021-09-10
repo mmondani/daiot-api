@@ -43,13 +43,13 @@ exports.findDispoDesdeHasta = (req, res) => {
 
 //--Guarda una accion
 exports.pushAccion = (req, res) => {
-    //console.log(req.body);
+    console.log("Accion recibida:",req.body);
     const accion = new Accion({
         "dispositivo":req.body.dispositivo, 
         "usuario": req.body.usuario, 
         "ts":new Date().getTime(),
-        "canal":req.body.canal,
-        "estado":req.body.estado
+        "comando":req.body.comando,
+        "parametro":req.body.parametro
     });
     accion.save()
     .then(dato=>{

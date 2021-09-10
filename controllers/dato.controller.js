@@ -43,7 +43,7 @@ exports.findDispoDesdeHasta = (req, res) => {
 
 //--Guarda una telemetria
 exports.pushTelemetry = (req, res) => {
-    console.log(req.body);
+    console.log("Telemetria recibida:",req.body);
     Dato.updateOne(
         {
             "nombre":req.body.Device, 

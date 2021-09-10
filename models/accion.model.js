@@ -4,8 +4,16 @@ const AccionSchema = mongoose.Schema({
     dispositivo: String,
     usuario:String,
     ts:Date,
-    canal:Number,
-    estado: Boolean
+    comando:String,
+    parametro: String
 });
+
+/*const AccionSchema = mongoose.Schema({
+    dispositivo: String,
+    usuario:String,
+    ts:Date,
+    canal:String,
+    estado: Boolean
+});*/
 
 module.exports = mongoose.model('Accion', AccionSchema,'iotAccion');

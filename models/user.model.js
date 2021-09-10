@@ -6,7 +6,7 @@ const validator = require('validator');
 const userSchema = mongoose.Schema({            //creamos nuestro esquema de mongoose
     name: {                                     // Este objeto define las diferentes propiedades del userSchema. 
         type: String,                           // Mongoose convertirá nuestro userSchema en un documento en la base de datos
-        required: true,                         // y esas propiedades se convertirán en campos en nuestro base de datos.
+        required: true,                         // y esas propiedades se convertirán en campos en nuestra base de datos.
         trim: true
     },
     email: {
