@@ -13,6 +13,6 @@ module.exports = (app) => {
     app.get('/action/:dispoId/:fDesde/:fHasta', passport.authenticate('jwt', { session: false }), accion.findDispoDesdeHasta);
 
     //--Guarda una acción
-    app.post('/action', passport.authenticate('jwt', { session: false }), accion.pushAccion);
+    app.put('/action', passport.authenticate('jwt', { session: false }), accion.pushAccion);
 
 }
