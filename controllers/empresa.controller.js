@@ -1,11 +1,11 @@
 const Empresa = require('../models/empresa.model.js');
 
-// Create and Save a new Note
+// Create and Save a new
 exports.create = (req, res) => {
 
 };
 
-// Retrieve and return all notes from the database.
+// Retrieve and return all from the database.
 exports.findAll = (req, res) => {
     Empresa.find()
     .then(empresas => {
@@ -17,17 +17,17 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single note with a noteId
+// Find a single
 exports.findOne = (req, res) => {
 
 };
 
-// Update a note identified by the noteId in the request
+// Update 
 exports.update = (req, res) => {
 
 };
 
-// Delete a note with the specified noteId in the request
+// Delete 
 exports.delete = (req, res) => {
 
 };

@@ -9,14 +9,14 @@
 			"name": "RPC",
 			"item": [
 				{
-					"name": "Envía comando a dispositivo via microservicio RPC",
+					"name": "Envía atributo a dispositivo via microservicio RPC",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NzM4OTEzLCJleHAiOjE2MjczNDM3MTN9.x1vS0XnZwrKJw9mP8L35njeN8iXEPY32L54V574IwnE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzEyMjM4MTgsImV4cCI6MTYzMTgyODYxOH0.mTWyiKwNmaX25ms_L0UE15XKFkkPgs21Z9V5O64T58w",
 									"type": "string"
 								}
 							]
@@ -28,7 +28,59 @@
 							"urlencoded": [
 								{
 									"key": "message",
-									"value": "{\"Device\":\"DAIoT02\",\"Actuacion\":{\"Canal\":1,\"Accion\":0},\"usuario\":\"castello.marcelo@gmail.com\"}",
+									"value": "{\"Device\":\"DAIoT01\",\"Attribute\":\"Ubicacion\",\"Parameter\":\"nueva ubicacion\",\"usuario\":\"castello.marcelo@gmail.com\"}",
+									"type": "text"
+								},
+								{
+									"key": "values",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "192.168.1.42:3001/attribute",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"42"
+							],
+							"port": "3001",
+							"path": [
+								"attribute"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Envía comando a dispositivo via microservicio RPC",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzEzMTI5NzAsImV4cCI6MTYzMTkxNzc3MH0.HL4OLeSI9mepzIeRpqIA0WutC1JPxBMkit9UKwsbwkE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "message",
+									"value": "{\"Device\":\"DAIoT01\",\"Command\":\"off\",\"Parameter\":\"1\",\"usuario\":\"castello.marcelo@gmail.com\"}",
 									"type": "text"
 								},
 								{
@@ -179,7 +231,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGYxOGRlZTdhNzU0ODA5OWViMDUyMWQiLCJpYXQiOjE2MjY0NDQyMjd9.8pPb_KtgE6djE1lwdGS63wTMVCln9WP7pyOmykhLTQE",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzE4Mzg2NTcsImV4cCI6MTYzMjQ0MzQ1N30.XBlk9hobfbrAz9o-39N_KJgmgBG0s-pDjSUIGufKbUE",
 							"type": "string"
 						}
 					]
@@ -196,7 +248,7 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3000/users/me",
+					"raw": "192.168.1.42:3000/users/me/profile",
 					"host": [
 						"192",
 						"168",
@@ -206,7 +258,8 @@
 					"port": "3000",
 					"path": [
 						"users",
-						"me"
+						"me",
+						"profile"
 					]
 				},
 				"description": "Para ver el perfil del usuario se deberá enviar en el POST en token correspondiente al usuario.\n\nColocar este token en Authorization -> Type -> Bearer Token"
@@ -221,7 +274,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NDgyNzAxLCJleHAiOjE2MjcwODc1MDF9._uy602QpO9c_zB_UtZgu1krhKFxMKn0zVahy-uF1OVM",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzE4Mzg2NTcsImV4cCI6MTYzMjQ0MzQ1N30.XBlk9hobfbrAz9o-39N_KJgmgBG0s-pDjSUIGufKbUE",
 							"type": "string"
 						}
 					]
@@ -229,7 +282,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://192.168.1.42:3000/datos/DAIoT02",
+					"raw": "http://192.168.1.42:3000/datos/DAIoT01",
 					"protocol": "http",
 					"host": [
 						"192",
@@ -240,10 +293,10 @@
 					"port": "3000",
 					"path": [
 						"datos",
-						"DAIoT02"
+						"DAIoT01"
 					]
 				},
-				"description": "Para ver todos los datos de la colección ```iotDatos``` se deberá enviar en el POST en token correspondiente al usuario que la solicita.\n\nColocar el token del usuario en Authorization -> Type -> Bearer Token"
+				"description": "Para ver todos los datos de la colección ```iotDatos``` se deberá enviar en el POST el token correspondiente al usuario que la solicita.\n\nColocar el token del usuario en Authorization -> Type -> Bearer Token"
 			},
 			"response": []
 		},
@@ -365,7 +418,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NDgzNDE3LCJleHAiOjE2MjcwODgyMTd9.8URd2TnjZYFm-pYw1J4twoGHLYgRAnmtiB4RyI-e-tY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzE4MDM4NjQsImV4cCI6MTYzMjQwODY2NH0.OwGNDaX8hCz0S5kT1ruUodmZilmSj3_MY0qcsA1hNkE",
 							"type": "string"
 						}
 					]
@@ -373,7 +426,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "192.168.1.42:3000/dato/tervacvjv01/2021-06-24",
+					"raw": "192.168.1.42:3000/datos/DAIoT01/2021-09-15",
 					"host": [
 						"192",
 						"168",
@@ -382,9 +435,9 @@
 					],
 					"port": "3000",
 					"path": [
-						"dato",
-						"tervacvjv01",
-						"2021-06-24"
+						"datos",
+						"DAIoT01",
+						"2021-09-15"
 					]
 				}
 			},
@@ -398,7 +451,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NDgzNDE3LCJleHAiOjE2MjcwODgyMTd9.8URd2TnjZYFm-pYw1J4twoGHLYgRAnmtiB4RyI-e-tY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzE4Mzg2NTcsImV4cCI6MTYzMjQ0MzQ1N30.XBlk9hobfbrAz9o-39N_KJgmgBG0s-pDjSUIGufKbUE",
 							"type": "string"
 						}
 					]
@@ -406,7 +459,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "192.168.1.42:3000/datos/tervacvjv01/2021-06-24/2021-06-25",
+					"raw": "192.168.1.42:3000/datos/DAIoT01/2021-09-14/2021-09-16",
 					"host": [
 						"192",
 						"168",
@@ -416,9 +469,9 @@
 					"port": "3000",
 					"path": [
 						"datos",
-						"tervacvjv01",
-						"2021-06-24",
-						"2021-06-25"
+						"DAIoT01",
+						"2021-09-14",
+						"2021-09-16"
 					]
 				}
 			},
@@ -432,7 +485,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NDgzNDE3LCJleHAiOjE2MjcwODgyMTd9.8URd2TnjZYFm-pYw1J4twoGHLYgRAnmtiB4RyI-e-tY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzE4Mzg2NTcsImV4cCI6MTYzMjQ0MzQ1N30.XBlk9hobfbrAz9o-39N_KJgmgBG0s-pDjSUIGufKbUE",
 							"type": "string"
 						}
 					]
@@ -440,7 +493,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "192.168.1.42:3000/datos/tervacvjv01",
+					"raw": "192.168.1.42:3000/datos/DAIoT01",
 					"host": [
 						"192",
 						"168",
@@ -450,7 +503,7 @@
 					"port": "3000",
 					"path": [
 						"datos",
-						"tervacvjv01"
+						"DAIoT01"
 					]
 				}
 			},
@@ -473,7 +526,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"Device\":\"tervacvjv04\",\n    \"Valores\":{\n        \"Temperatura\":22.1,\n        \"Humedad\":68.56,\n        \"Presion\":1028.0,\n        \"ts\":1626547223479\n    }\n}",
+					"raw": "{\n    \"Device\":\"DAIoT02\",\n    \"Valores\":{\n        \"Temperatura\":22.1,\n        \"Humedad\":68.56,\n        \"ts\":1626547223479\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -493,18 +546,28 @@
 						"telemetry"
 					]
 				},
-				"description": "Guarda telemetría proveniente de un dsipositivo. El body deberá contener lo siguiente:\n```JSON\n{\n    \"Device\":\"tervacvjv04\",\n    \"Valores\":{\n        \"Temperatura\":22.1,\n        \"Humedad\":68.56,\n        \"Presion\":1028.0,\n        \"ts\":1626547223479\n    }\n}\n```"
+				"description": "Guarda telemetría proveniente de un dsipositivo. El body deberá contener lo siguiente:\n```JSON\n{\n    \"Device\":\"DAIoT01\",\n    \"Valores\":{\n        \"Temperatura\":22.1,\n        \"Humedad\":68.56,\n        \"ts\":1626547223479\n    }\n}\n```"
 			},
 			"response": []
 		},
 		{
 			"name": "Guarda una accion",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NzM4OTEzLCJleHAiOjE2MjczNDM3MTN9.x1vS0XnZwrKJw9mP8L35njeN8iXEPY32L54V574IwnE",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"dispositivo\":\"DAIoT02\",\n    \"usuario\":\"castello.marcelo@gmail.com\",\n    \"ts\":1563232323,\n    \"canal\":1,\n    \"estado\":1\n}",
+					"raw": "{\n    \"dispositivo\":\"DAIoT02\",\n    \"usuario\":\"castello.marcelo@gmail.com\",\n    \"ts\":1563232323,\n    \"Command\":1,\n    \"Parameter\":1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -512,7 +575,7 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3000/accion",
+					"raw": "192.168.1.42:3000/action",
 					"host": [
 						"192",
 						"168",
@@ -521,7 +584,7 @@
 					],
 					"port": "3000",
 					"path": [
-						"accion"
+						"action"
 					]
 				}
 			},

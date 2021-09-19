@@ -9,5 +9,6 @@ const dbConf = {
 
 module.exports = {
 
-    url: 'mongodb://'+ dbConf.databaseUser+':'+dbConf.databasePassword+'@'+dbConf.mongoServerUrl+':'+dbConf.mongoPort+'/'+dbConf.databaseName  //mongodb://iotuser:iot123@192.168.1.220:27017/iot'
+    url: 'mongodb://'+ dbConf.databaseUser+':'+dbConf.databasePassword+'@'+dbConf.mongoServerUrl+':'+dbConf.mongoPort+'/'+dbConf.databaseName, 
+    dataNsamples:144
 }

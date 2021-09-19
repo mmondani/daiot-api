@@ -1,7 +1,5 @@
 module.exports = (app) => {
     const datos = require('../controllers/dato.controller.js');
-    const dispo = require('../controllers/dispo.controller.js');
-    //const auth = require('../middlewares/auth.middleware.js');
     const passport = require('passport');
 
     //--Devuelve todos los datos de un dispositivo
@@ -14,6 +12,7 @@ module.exports = (app) => {
     app.get('/datos/:dispoId/:fDesde/:fHasta', passport.authenticate('jwt', { session: false }), datos.findDispoDesdeHasta);
 
     //--Guarda una telemetria
-    app.put('/telemetry',dispo.authTelemetry, datos.pushTelemetry);
+    //app.put('/telemetry',dispo.authTelemetry, datos.pushTelemetry);
+    app.put('/telemetry', datos.pushTelemetry);
 
 }

@@ -1,54 +1,56 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-// create express app
+
+//--Create express app
 const app = express();
 const appPort = 3000;
 
-// parse requests of content-type - application/x-www-form-urlencoded
+//--Parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// parse requests of content-type - application/json
+//--Parse requests of content-type - application/json
 app.use(bodyParser.json())
 
-// Configuring the database
+//--Configuring the database
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-// Connecting to the database
+//--Connecting to the database
 mongoose.connect(dbConfig.url, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false  
 }).then(() => {
-    console.log("Conectado a la base de datos",dbConfig.url);    
+    console.log("Connected to database:",dbConfig.url);    
 }).catch(err => {
-    console.log('No se pudo conectar a la base de datos', err);
+    console.log('Can\'t connect to database', err);
     process.exit();
 });
 
-// define a simple route
+//--Define a simple route
 app.get('/', (req, res) => {
-    res.json({"message": "API para mongodb DAIoT."});
+    res.json({"message": "API DAIoT."});
 });
 
-//--Rutas
+//--Define routes
 require('./routes/empresa.routes.js')(app);
 require('./routes/dato.routes.js')(app);
 require('./routes/user.routes.js')(app);
 require('./routes/accion.routes.js')(app);
 require('./routes/dispo.routes.js')(app);
-app.use(passport.initialize());
-app.use(passport.session());
 require('./config/passport.config')(passport);
 
-//const userRouter = require('./routes/user.routes.js')
-//app.use(userRouter); //require('./routes/user.routes.js');
+//--Init passport auth 
+app.use(passport.initialize());
+app.use(passport.session());
 
-// listen for requests
+
+
+//--listen for requests
 app.listen(appPort, () => {
-    console.log("Server escuchando en puerto",appPort);
+    console.log("API service running on port:",appPort);
 });

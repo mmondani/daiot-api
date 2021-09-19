@@ -1,9 +1,4 @@
-//const auth = require('../middlewares/auth.middleware.js')              //importamos el middleware de autenticación
-//const express = require('express')
 const User = require('../models/user.model.js')
-
-//const router = express.Router()
-//const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const jwtconfig = require('../config/jwt.config');
 const nodeMailer = require('../config/nodemailer.config');
@@ -11,7 +6,7 @@ const jwtDecode = require('jwt-decode');
 const bycrpt = require('bcryptjs');
 
 exports.register = (req, res) => {
-    //--Verifica si el usuario que quiere registrar tiene rol administrador
+    //--Verify if request user is administrator
     getUserByEmail(req.body.admin, (err, user) => {
         if(user.rol=='admin') {      
             let newUser = new User({
@@ -40,15 +35,19 @@ exports.register = (req, res) => {
         }
     });
 }
-//--Hace login con usuario enviado en el body
+//--login with user received on body
 exports.login = (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
+    //--Search in DB user by email
     getUserByEmail(email, (err, user) => {
         if (!err && user) {
+            //--Compare password received against password in db
             comparePassword(password, user.password, (err, isMatch) => {
                 if (isMatch) {
-                    const token = jwt.sign({ data: user }, jwtconfig.secret, { expiresIn: 604800 });//equivale a 7 días
+                    //--If passwords match, generate token with only _id, secret and duration of 3600 seg. (one hour)
+                    const token = jwt.sign({ data: {"_id":user._id} }, jwtconfig.secret, { expiresIn: 3600 });
+                    //--Send response to UI with token
                     res.status(200).json({ success: true, msg: 'Login Ok ', token: 'Bearer ' + token });
                 } else {
                     return res.status(401).json({ success: false, msg: 'El correo electrónico o la contraseña son incorrectos' });
@@ -165,76 +164,3 @@ function updatePassword(email, newPassword, callback) {
     });
 
 }
-
-/*
-//router.post('/users', async (req, res) => {
-exports.createUser = async (req, res) =>{
-    // Crear nuevo usuario
-    try {
-        const user = new User(req.body)  // crea un nuevo usuario junto con la información de usuario suministrada a la que accedemos desde req.body
-        user.save()                               // guarda e usuario
-        const token = await user.generateAuthToken()    //generamos un token de autenticación
-        res.status(201).send({ user, token })           //lo devolvemos (el token) como respuesta junto con los datos del usuario
-    } 
-    catch (error) { 
-        res.status(400).send(error)
-    }
-}
-
-//router.post('/users/login', async(req, res) => {
-exports.userLogin = async (req, res) =>{
-    //Inicia sesión de un usuario registrado
-    try {
-        const { email, password } = req.body
-        const user = await User.findByCredentials(email, password)
-        if (!user) {
-            return res.status(401).send({error: 'Login failed! Check authentication credentials'})
-        }
-        const token = await user.generateAuthToken()
-        res.send({ user, token })
-    } 
-    catch (error) {
-        res.status(400).send(error)
-    }
-
-}
-
-//router.get('/users/me', auth, async(req, res) => {      //router para obtener el perfil de usuario -> solicitud al endpoint /users/me
-exports.verUser = (req, res) =>{
-    // Ver el profile del usuario logeado
-    try{               
-        res.send(req.user)                                  //obtengo el perfil de usuario de la solicitud
-    }
-    catch (error) {
-        res.status(400).send(error)
-    }
-}
-
-
-//router.post('/users/me/logout', auth, async (req, res) => {
-    exports.logoutUser = async (req, res) =>{
-    // Logout del usuario de la aplicación
-    try {
-        req.user.tokens = req.user.tokens.filter((token) => {   // filtramos la matriz de tokens del usuario -> 
-            return token.token != req.token                     // devolvemos true si alguno de los tokens no es igual al token que utilizó el usuario para iniciar sesión -> El arreglo filter method crea una nuevo arreglo con todos los elementos que pasan la prueba implementada. En nuestro caso anterior, el método de filtro devolverá un nuevo arreglo que contiene cualquier otro token aparte del que se usó para iniciar sesión
-        })
-        await req.user.save()
-        res.status(200).send(error)
-    } 
-    catch (error) {console.log(error)
-        res.status(500).send(error)
-    }
-}*/
-
-/*router.post('/users/me/logoutall', auth, async(req, res) => {
-    // Logout del usuario de todos los dispositivos
-    try {
-        req.user.tokens.splice(0, req.user.tokens.length)
-        await req.user.save()
-        res.send()
-    } catch (error) {
-        res.status(500).send(error)
-    }
-})*/
-
-//module.exports = router

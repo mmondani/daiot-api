@@ -1,4 +1,5 @@
 const Dato = require('../models/dato.model.js');
+const dbConf = require('../config/database.config')
 
 
 //--Devuelve todos los datos de un dispositivo
@@ -47,17 +48,11 @@ exports.pushTelemetry = (req, res) => {
     Dato.updateOne(
         {
             "nombre":req.body.Device, 
-            "nsamples": {$lt: 144}, 
+            "nsamples": {$lt: dbConf.dataNsamples}, 
             "dia":new Date().toJSON().slice(0,10)
         },
         {
-            $push:{"telemetry": 
-            {
-                "temp":req.body.Valores.Temperatura,
-                "hum":req.body.Valores.Humedad,
-                "pres":req.body.Valores.Presion,
-                "ts":req.body.Valores.ts
-            }
+            $push:{"telemetry": req.body.Valores
         },
             $min: {"primero": req.body.Valores.ts},
             $max: {"ultimo": req.body.Valores.ts},

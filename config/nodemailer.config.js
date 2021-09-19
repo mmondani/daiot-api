@@ -18,7 +18,7 @@ module.exports.nodeMailer = function (toEmail, subject, msg) {
     from: 'mcastello ingenieria',
     to: toEmail,
     subject: subject, 
-    text: 'Hola', 
+    text: 'Solicitud de blanqueo de password.', 
     html: msg 
   };
 

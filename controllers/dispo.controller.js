@@ -8,7 +8,6 @@ const bycrpt = require('bcryptjs');
 
 
 exports.authTelemetry = (req,res, next) => {
-    //console.log("auth:",req.body.Device);
     getDispoByname(req.body.Device, (err, dispo) => {
         if (!err) {
             if (dispo == null) {
@@ -64,17 +63,7 @@ function getDispoByname(nombre, callback) {
 }
 
 function createDispo(newDispo, callback) {
-    //newDispo.token = jwt.sign({ data: newDispo.nombre }, jwtconfig.secret);
     newDispo.save(callback);
-    /*bycrpt.genSalt(10, (err, salt) => {
-        bycrpt.hash(newDispo.password, salt, (err, hash) => {
-            if (err) {
-                throw err;
-            }
-            newUser.password = hash;
-            newDispo.save(callback);
-        });
-    });*/
 }
 
 

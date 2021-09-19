@@ -1,6 +1,5 @@
 module.exports = (app) => {
     const accion = require('../controllers/accion.controller.js');
-    //const auth = require('../middlewares/auth.middleware.js');
     const passport = require('passport');
 
     //--Devuelve todos las acciones de un dispositivo
