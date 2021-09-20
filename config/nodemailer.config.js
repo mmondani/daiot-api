@@ -6,8 +6,8 @@ module.exports.nodeMailer = function (toEmail, subject, msg) {
     secure: false,
     port: 25,
     auth: {
-      user: 'server.mcastello@gmail.com',
-      pass: 'ch0c0lat3'
+      user: 'user@mygmail.com',
+      pass: 'mypasswdmail'
     },
     tls: {
       rejectUnauthorized: false
@@ -15,7 +15,7 @@ module.exports.nodeMailer = function (toEmail, subject, msg) {
   });
 
   let mailOptions = {
-    from: 'mcastello ingenieria',
+    from: 'Empresa',
     to: toEmail,
     subject: subject, 
     text: 'Solicitud de blanqueo de password.', 
