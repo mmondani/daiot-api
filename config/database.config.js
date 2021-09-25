@@ -1,6 +1,6 @@
 
 const dbConf = {
-    mongoServerUrl : '192.168.1.220',
+    mongoServerUrl : 'mongodb',
     mongoPort : 27017,
     databaseName : 'iot',
     databaseUser : 'iotuser',
