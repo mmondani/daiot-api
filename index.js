@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
@@ -11,6 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 //--Parse requests of content-type - application/json
 app.use(bodyParser.json())
+
+let corsOptions = {
+	origin: "*",
+	optionsSucessStatus: 200
+};
+app.use(cors(corsOptions));
 
 //--Configuring the database
 const dbConfig = require('./config/database.config.js');

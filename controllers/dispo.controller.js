@@ -57,6 +57,17 @@ exports.register = (req, res) => {
     });
 }
 
+exports.get = (req, res) => {
+    Dispo.find((err, dispos) => {
+        if (!err) {
+            res.status(200).json(dispos);
+        }
+        else {
+            res.status(500).json({success: false, msg: 'Error al solicitar los dispositivos'})
+        }
+    })
+}
+
 function getDispoByname(nombre, callback) {
     const query = { nombre: nombre }
     Dispo.findOne(query, callback);

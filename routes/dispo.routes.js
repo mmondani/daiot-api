@@ -5,4 +5,7 @@ module.exports = (app) => {
 
     //--Registro
     app.get('/dispo/register', passport.authenticate('jwt', { session: false }), dispo.register);
+
+    // --Visualización
+    app.get('/dispo', passport.authenticate('jwt', { session: false }), dispo.get);
 }
