@@ -8,4 +8,10 @@ module.exports = (app) => {
 
     // --Visualización
     app.get('/dispo', passport.authenticate('jwt', { session: false }), dispo.get);
+
+    // --Guarda el estado de los canales
+    app.put('/dispo/canal', dispo.updateCanal)
+
+    // --Guarda el estado de conexión del dispositivo
+    app.put('/dispo/status', dispo.updateStatus)
 }

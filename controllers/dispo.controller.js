@@ -24,6 +24,9 @@ exports.register = (req, res) => {
         nombre: req.body.nombre,
         tipo: req.body.tipo,
         empresa: req.body.empresa,
+        online: false,
+        canal1: false,
+        canal2: false,
         variables:{
             temperatura:{
                 unidad:req.body.variables.temperatura.unidad,
@@ -67,6 +70,43 @@ exports.get = (req, res) => {
         }
     })
 }
+
+
+exports.updateCanal = (req, res) => {
+    console.log("Cambio en un canal recibido:",req.body);
+    
+    Dispo.updateOne(
+        {"nombre":req.body.Device},
+        {$set:{[`canal${req.body.Valores.Canal}`]: req.body.Valores.Estado === 1? true: false}}
+    )
+    .then(dato=>{
+        res.send(dato);
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message:err.message || "Error en la insercion del update de canal."
+        });
+    });
+}
+
+
+exports.updateStatus = (req, res) => {
+    console.log("Cambio status de conexión recibido:",req.body);
+    
+    Dispo.updateOne(
+        {"nombre":req.body.Device},
+        {$set:{"online": req.body.Status === "online"? true: false}}
+    )
+    .then(dato=>{
+        res.send(dato);
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message:err.message || "Error en la insercion del update del status de conexión."
+        });
+    });
+}
+
 
 function getDispoByname(nombre, callback) {
     const query = { nombre: nombre }
