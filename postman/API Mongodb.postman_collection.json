@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "220e4cf1-0ca0-4588-8642-68b15814574c",
+		"_postman_id": "d8a4a096-078a-409d-90f0-a066888ca2dc",
 		"name": "API Mongodb",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -16,7 +16,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzEyMjM4MTgsImV4cCI6MTYzMTgyODYxOH0.mTWyiKwNmaX25ms_L0UE15XKFkkPgs21Z9V5O64T58w",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -45,14 +45,10 @@
 							}
 						},
 						"url": {
-							"raw": "192.168.1.42:3001/attribute",
+							"raw": "{{URL_RPC}}/attribute",
 							"host": [
-								"192",
-								"168",
-								"1",
-								"42"
+								"{{URL_RPC}}"
 							],
-							"port": "3001",
 							"path": [
 								"attribute"
 							]
@@ -68,7 +64,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzEzMTI5NzAsImV4cCI6MTYzMTkxNzc3MH0.HL4OLeSI9mepzIeRpqIA0WutC1JPxBMkit9UKwsbwkE",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -80,7 +76,7 @@
 							"urlencoded": [
 								{
 									"key": "message",
-									"value": "{\"Device\":\"DAIoT01\",\"Command\":\"off\",\"Parameter\":\"1\",\"usuario\":\"castello.marcelo@gmail.com\"}",
+									"value": "{\"Device\":\"DAIoT01\",\"Command\":\"off\",\"Parameter\":\"1\",\"usuario\":\"admin@admin.com\"}",
 									"type": "text"
 								},
 								{
@@ -97,14 +93,10 @@
 							}
 						},
 						"url": {
-							"raw": "192.168.1.42:3001/command",
+							"raw": "{{URL_RPC}}/command",
 							"host": [
-								"192",
-								"168",
-								"1",
-								"42"
+								"{{URL_RPC}}"
 							],
-							"port": "3001",
 							"path": [
 								"command"
 							]
@@ -123,7 +115,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2ODE5NDcyLCJleHAiOjE2Mjc0MjQyNzJ9.5Kromqo-YZRPMqRpwlD2xgdhRIIzDba9liF_I71Gstk",
+							"value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -132,7 +124,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"Graciela Martinez\",\n    \"email\":\"gmartinez@gmail.com\",\n    \"password\":\"iot123456\",\n    \"rol\":\"user\",\n    \"admin\":\"castello.marcelo@gmail.com\"\n}",
+					"raw": "{\n    \"name\":\"daiot\",\n    \"email\":\"mmondani89@gmail.com\",\n    \"password\":\"iot123\",\n    \"rol\":\"user\",\n    \"admin\":\"admin@admin.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -140,14 +132,10 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3000/register",
+					"raw": "{{URL_API}}/register",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"register"
 					]
@@ -163,7 +151,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\":\"castello.marcelo@gmail.com\",\n    \"password\":\"iot123456\"\n\n}",
+					"raw": "{\n    \"email\":\"admin@admin.com\",\n    \"password\":\"admin123\"\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -171,14 +159,10 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3000/login",
+					"raw": "{{URL_API}}/login",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"login"
 					]
@@ -195,7 +179,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGYxOGRlZTdhNzU0ODA5OWViMDUyMWQiLCJpYXQiOjE2MjY0NDY2NTF9.nI4f_Mg_F-fsvXXpLaAoqTdAT06xQ4Pm1l7ciy06QCQ",
+							"value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -203,14 +187,10 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "192.168.1.42:3000/users/me/logout",
+					"raw": "{{URL_API}}/users/me/logout",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"users",
 						"me",
@@ -231,7 +211,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzE4Mzg2NTcsImV4cCI6MTYzMjQ0MzQ1N30.XBlk9hobfbrAz9o-39N_KJgmgBG0s-pDjSUIGufKbUE",
+							"value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -248,14 +228,10 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3000/users/me/profile",
+					"raw": "{{URL_API}}/users/me/profile",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"users",
 						"me",
@@ -274,7 +250,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzE4Mzg2NTcsImV4cCI6MTYzMjQ0MzQ1N30.XBlk9hobfbrAz9o-39N_KJgmgBG0s-pDjSUIGufKbUE",
+							"value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -282,15 +258,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://192.168.1.42:3000/datos/DAIoT01",
-					"protocol": "http",
+					"raw": "{{URL_API}}/datos/DAIoT01",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"datos",
 						"DAIoT01"
@@ -308,7 +279,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjFmNzhmMWNhOGE4MWFlNDYyOGVkMiIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJG9WM1ZlQ2ZjM1NNdWFlWTA2UmhoSS5VM3FXWnhWM2IyN0xtNEp3Q2drWEhqRUp6dngvVzdPIiwidG9rZW5zIjpbXSwiX192IjowfSwiaWF0IjoxNjI2NDcwMzA0LCJleHAiOjE2MjcwNzUxMDR9.yLr7YloivX79TNo9JrmfdMXSN40V5qybJmifaV0207s",
+							"value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -325,14 +296,10 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3000/changepassword",
+					"raw": "{{URL_API}}/changepassword",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"changepassword"
 					]
@@ -356,14 +323,10 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3000/forgotpassword",
+					"raw": "{{URL_API}}/forgotpassword",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"forgotpassword"
 					]
@@ -387,15 +350,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://192.168.1.42:3000/resetpassword?index=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiY2FzdGVsbG8ubWFyY2Vsb0BnbWFpbC5jb20ifSwiaWF0IjoxNjI2NDczNDQ2LCJleHAiOjE2MjY0NzQxNDZ9.SQnIW5uSdhXH5Mc0N3fR_RRRCvQPuTReOiZwuZvqhII",
-					"protocol": "http",
+					"raw": "{{URL_API}}/resetpassword?index=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiY2FzdGVsbG8ubWFyY2Vsb0BnbWFpbC5jb20ifSwiaWF0IjoxNjI2NDczNDQ2LCJleHAiOjE2MjY0NzQxNDZ9.SQnIW5uSdhXH5Mc0N3fR_RRRCvQPuTReOiZwuZvqhII",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"resetpassword"
 					],
@@ -418,7 +376,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzE4MDM4NjQsImV4cCI6MTYzMjQwODY2NH0.OwGNDaX8hCz0S5kT1ruUodmZilmSj3_MY0qcsA1hNkE",
+							"value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -426,14 +384,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "192.168.1.42:3000/datos/DAIoT01/2021-09-15",
+					"raw": "{{URL_API}}/datos/DAIoT01/2021-09-15",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"datos",
 						"DAIoT01",
@@ -451,7 +405,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzE4Mzg2NTcsImV4cCI6MTYzMjQ0MzQ1N30.XBlk9hobfbrAz9o-39N_KJgmgBG0s-pDjSUIGufKbUE",
+							"value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -459,14 +413,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "192.168.1.42:3000/datos/DAIoT01/2021-09-14/2021-09-16",
+					"raw": "{{URL_API}}/datos/DAIoT01/2021-09-14/2021-09-16",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"datos",
 						"DAIoT01",
@@ -485,7 +435,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowLCJyb2wiOiJhZG1pbiJ9LCJpYXQiOjE2MzE4Mzg2NTcsImV4cCI6MTYzMjQ0MzQ1N30.XBlk9hobfbrAz9o-39N_KJgmgBG0s-pDjSUIGufKbUE",
+							"value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -493,17 +443,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "192.168.1.42:3000/datos/DAIoT01",
+					"raw": "{{URL_API}}/datos/DAIoT03",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"datos",
-						"DAIoT01"
+						"DAIoT03"
 					]
 				}
 			},
@@ -513,14 +459,7 @@
 			"name": "Guarda telemetria",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NTQ4OTA1LCJleHAiOjE2MjcxNTM3MDV9.YX-DkxM2QEHE7jaUBBPNtEWlPMPgvRYIl6gT85EZ2Ko",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "PUT",
 				"header": [],
@@ -534,14 +473,10 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3000/telemetry",
+					"raw": "{{URL_API}}/telemetry",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"telemetry"
 					]
@@ -558,7 +493,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2NzM4OTEzLCJleHAiOjE2MjczNDM3MTN9.x1vS0XnZwrKJw9mP8L35njeN8iXEPY32L54V574IwnE",
+							"value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -575,14 +510,10 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3000/action",
+					"raw": "{{URL_API}}/action",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"action"
 					]
@@ -601,7 +532,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYwZjIyMTQ1M2E1ODMxMjIyNDU3OTEyNSIsIm5hbWUiOiJNYXJjZWxvIENhc3RlbGxvIiwiZW1haWwiOiJjYXN0ZWxsby5tYXJjZWxvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDBZWlFOVEhiRDZCTHVzZ0Z4RG50N3VORjdISzFOZC9zb0tMbGtLWE1hY2hWdjlQdXZ1NmVhIiwiX192IjowfSwiaWF0IjoxNjI2ODE5NDcyLCJleHAiOjE2Mjc0MjQyNzJ9.5Kromqo-YZRPMqRpwlD2xgdhRIIzDba9liF_I71Gstk",
+							"value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -618,14 +549,10 @@
 					}
 				},
 				"url": {
-					"raw": "192.168.1.42:3000/dispo/register/",
+					"raw": "{{URL_API}}/dispo/register/",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"42"
+						"{{URL_API}}"
 					],
-					"port": "3000",
 					"path": [
 						"dispo",
 						"register",
@@ -633,6 +560,91 @@
 					]
 				},
 				"description": "Para registrar un dispositivo se deberá autenticar con el token del usuario que registra e incluir un body con el siguiente formato:\n```JSON\n{\n    \"nombre\": \"DAIoT03\",\n    \"tipo\": \"Termohigrómetro\",\n    \"empresa\": \"VJV\",\n    \"variables\":{\n        \"temperatura\":{\n            \"unidad\":\"ªC\",\n            \"prioridad\":\"1\"\n        },\n        \"humedad\":{\n            \"unidad\":\"%\",\n            \"prioridad\":2\n        },\n        \"presion\":{\n            \"unidad\":\"Hp\",\n            \"prioridad\":3\n        }\n    }\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Guarda estado canal",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Device\": \"DAIoT03\",\n    \"Valores\": {\n        \"Canal\": 2,\n        \"Estado\": 0\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_API}}/dispo/canal",
+					"host": [
+						"{{URL_API}}"
+					],
+					"path": [
+						"dispo",
+						"canal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Guarda estado conexión",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Device\": \"DAIoT03\",\n    \"Status\": \"offline\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_API}}/dispo/status",
+					"host": [
+						"{{URL_API}}"
+					],
+					"path": [
+						"dispo",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trae todos los dispositivos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_API}}/dispo/",
+					"host": [
+						"{{URL_API}}"
+					],
+					"path": [
+						"dispo",
+						""
+					]
+				}
 			},
 			"response": []
 		}
