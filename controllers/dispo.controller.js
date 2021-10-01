@@ -73,7 +73,7 @@ exports.getDispos = (req, res) => {
 
 
 exports.getDispo = (req, res) => {
-    Dispo.find({nombre: req.params.dispoId},
+    Dispo.findOne({nombre: req.params.dispoId},
         (err, dispos) => {
             if (!err) {
                 res.status(200).json(dispos);
