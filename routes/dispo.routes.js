@@ -7,7 +7,10 @@ module.exports = (app) => {
     app.get('/dispo/register', passport.authenticate('jwt', { session: false }), dispo.register);
 
     // --Visualización
-    app.get('/dispo', passport.authenticate('jwt', { session: false }), dispo.get);
+    app.get('/dispo', passport.authenticate('jwt', { session: false }), dispo.getDispos);
+
+    // --Visualización
+    app.get('/dispo/:dispoId', passport.authenticate('jwt', { session: false }), dispo.getDispo);
 
     // --Guarda el estado de los canales
     app.put('/dispo/canal', dispo.updateCanal)

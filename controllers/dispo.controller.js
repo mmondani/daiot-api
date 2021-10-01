@@ -60,7 +60,7 @@ exports.register = (req, res) => {
     });
 }
 
-exports.get = (req, res) => {
+exports.getDispos = (req, res) => {
     Dispo.find((err, dispos) => {
         if (!err) {
             res.status(200).json(dispos);
@@ -70,6 +70,20 @@ exports.get = (req, res) => {
         }
     })
 }
+
+
+exports.getDispo = (req, res) => {
+    Dispo.find({nombre: req.params.dispoId},
+        (err, dispos) => {
+            if (!err) {
+                res.status(200).json(dispos);
+            }
+            else {
+                res.status(500).json({success: false, msg: 'Error al solicitar el dispositivo'})
+            }
+    })
+}
+
 
 
 exports.updateCanal = (req, res) => {
