@@ -647,6 +647,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Traer un dispositivo por nombre",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_API}}/dispo/DAIoT481",
+					"host": [
+						"{{URL_API}}"
+					],
+					"path": [
+						"dispo",
+						"DAIoT481"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
