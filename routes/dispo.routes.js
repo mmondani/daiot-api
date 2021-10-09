@@ -17,4 +17,7 @@ module.exports = (app) => {
 
     // --Guarda el estado de conexión del dispositivo
     app.put('/dispo/status', dispo.updateStatus)
+
+    // --Guarda la última telemedición del dispositivo
+    app.put('/dispo/ultima-tele', dispo.updateUltimaTele)
 }

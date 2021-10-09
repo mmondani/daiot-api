@@ -27,6 +27,11 @@ exports.register = (req, res) => {
         online: false,
         canal1: false,
         canal2: false,
+        ultimaTele: {
+            Temperatura: 0,
+            Humedad: 0,
+            ts: 0
+        },
         variables:{
             temperatura:{
                 unidad:req.body.variables.temperatura.unidad,
@@ -120,6 +125,24 @@ exports.updateStatus = (req, res) => {
         });
     });
 }
+
+exports.updateUltimaTele = (req, res) => {
+    console.log("Cambio última telemedición recibido:",req.body);
+    
+    Dispo.updateOne(
+        {"nombre":req.body.Device},
+        {$set:{"ultimaTele": req.body.Valores}}
+    )
+    .then(dato=>{
+        res.send(dato);
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message:err.message || "Error en la insercion del update de la última telemedición."
+        });
+    });
+}
+
 
 
 function getDispoByname(nombre, callback) {

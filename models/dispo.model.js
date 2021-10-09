@@ -7,6 +7,11 @@ const DispoSchema = mongoose.Schema({
     online: Boolean,
     canal1: Boolean,
     canal2: Boolean,
+    ultimaTele: {
+        Temperatura: Number,
+        Humedad: Number,
+        ts: Number
+    },
     variables:{
         temperatura:{
             unidad:String,
