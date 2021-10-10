@@ -30,7 +30,7 @@ exports.findDispoDia = (req, res) => {
 
 //--Devuelve los datos de un dispositivo desde fecha hasta fecha
 exports.findDispoDesdeHasta = (req, res) => {
-    Dato.find({nombre:req.params.dispoId,dia:{$gte:req.params.fDesde},dia:{$lte:req.params.fHasta}})
+    Dato.find({nombre:req.params.dispoId,dia:{$gte:req.params.fDesde, $lte:req.params.fHasta}})
     .then(dato=>{
         res.send(dato);
     })
