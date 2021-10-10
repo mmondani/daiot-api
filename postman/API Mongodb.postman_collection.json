@@ -523,9 +523,6 @@
 		},
 		{
 			"name": "Registra un dispositivo",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -537,11 +534,11 @@
 						}
 					]
 				},
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"DAIoT03\",\n    \"tipo\": \"Termohigrómetro\",\n    \"empresa\": \"VJV\",\n    \"variables\":{\n        \"temperatura\":{\n            \"unidad\":\"ªC\",\n            \"prioridad\":\"1\"\n        },\n        \"humedad\":{\n            \"unidad\":\"%\",\n            \"prioridad\":2\n        },\n        \"presion\":{\n            \"unidad\":\"Hp\",\n            \"prioridad\":3\n        }\n    }\n}",
+					"raw": "{\n    \"nombre\": \"DAIoT484\",\n    \"tipo\": \"Termohigrómetro\",\n    \"empresa\": \"VJV\",\n    \"variables\":{\n        \"temperatura\":{\n            \"unidad\":\"ªC\",\n            \"prioridad\":\"1\"\n        },\n        \"humedad\":{\n            \"unidad\":\"%\",\n            \"prioridad\":2\n        },\n        \"presion\":{\n            \"unidad\":\"Hp\",\n            \"prioridad\":3\n        }\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"

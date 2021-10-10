@@ -4,7 +4,7 @@ module.exports = (app) => {
     const { register } = require('../controllers/dispo.controller.js');
 
     //--Registro
-    app.get('/dispo/register', passport.authenticate('jwt', { session: false }), dispo.register);
+    app.post('/dispo/register', passport.authenticate('jwt', { session: false }), dispo.register);
 
     // --Visualización
     app.get('/dispo', passport.authenticate('jwt', { session: false }), dispo.getDispos);

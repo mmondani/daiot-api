@@ -45,8 +45,8 @@ exports.login = (req, res) => {
             //--Compare password received against password in db
             comparePassword(password, user.password, (err, isMatch) => {
                 if (isMatch) {
-                    //--If passwords match, generate token with only _id, secret and duration of 3600 seg. (one hour)
-                    const token = jwt.sign({ data: {"_id":user._id} }, jwtconfig.secret, { expiresIn: 3600 });
+                    //--If passwords match, generate token with only _id, secret and duration of 86400 seg. (one day)
+                    const token = jwt.sign({ data: {"_id":user._id} }, jwtconfig.secret, { expiresIn: 86400 });
                     //--Send response to UI with token
                     res.status(200).json({ success: true, msg: 'Login Ok ', token: 'Bearer ' + token });
                 } else {
