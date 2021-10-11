@@ -125,7 +125,7 @@ exports.updateStatus = (req, res) => {
         });
     });
 }
-
+//actualiza la última telemetría
 exports.updateUltimaTele = (req, res) => {
     console.log("Cambio última telemedición recibido:",req.body);
     

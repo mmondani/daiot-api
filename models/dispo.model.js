@@ -8,7 +8,7 @@ const DispoSchema = mongoose.Schema({
     canal1: Boolean,
     canal2: Boolean,
     ultimaTele: {
-        Temperatura: Number,
+        Temperatura: Number,        //agregado para mentener la última telemetría
         Humedad: Number,
         ts: Number
     },
